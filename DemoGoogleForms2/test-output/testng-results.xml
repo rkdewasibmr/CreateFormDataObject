@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="48722" started-at="2019-02-13T20:26:36Z" finished-at="2019-02-13T20:27:25Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="48722" started-at="2019-02-13T20:26:36Z" finished-at="2019-02-13T20:27:25Z">
+      <class name="com.gforms.qa.pages.FormPageTest2">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.gforms.qa.pages.FormPageTest2@3f4d3d]" name="setup" is-config="true" duration-ms="48658" started-at="2019-02-13T20:26:36Z" finished-at="2019-02-13T20:27:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="fillformTest([Ljava.lang.String;)[pri:0, instance:com.gforms.qa.pages.FormPageTest2@3f4d3d]" name="fillformTest" duration-ms="5" started-at="2019-02-13T20:27:24Z" data-provider="dataprovider1" finished-at="2019-02-13T20:27:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.String;@5b6f42]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillformTest -->
+        <test-method status="PASS" signature="fillformTest([Ljava.lang.String;)[pri:0, instance:com.gforms.qa.pages.FormPageTest2@3f4d3d]" name="fillformTest" duration-ms="2" started-at="2019-02-13T20:27:25Z" data-provider="dataprovider1" finished-at="2019-02-13T20:27:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.String;@38d0b5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillformTest -->
+        <test-method status="PASS" signature="fillformTest([Ljava.lang.String;)[pri:0, instance:com.gforms.qa.pages.FormPageTest2@3f4d3d]" name="fillformTest" duration-ms="1" started-at="2019-02-13T20:27:25Z" data-provider="dataprovider1" finished-at="2019-02-13T20:27:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.String;@115b28]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillformTest -->
+      </class> <!-- com.gforms.qa.pages.FormPageTest2 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
