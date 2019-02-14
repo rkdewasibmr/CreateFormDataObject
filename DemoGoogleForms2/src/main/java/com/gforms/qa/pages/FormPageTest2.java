@@ -43,7 +43,7 @@
 			
 		}
 		
-		@Test(dataProvider="dataprovider1")
+		@Test(priority=1,dataProvider="dataprovider1")
 		public void fillformTest(String ... args) throws InterruptedException {
 			
 			//formpage.fillformdata(q,o1,o2,o3);
@@ -51,10 +51,12 @@
 			
 			if(count==1) {
 				formpage.fillQuestion(args[0]);
+				System.out.println("filled first question value");
 				
 			}
 			else {
 				formpage.fillQuestion2(args[0]);
+				System.out.println("filled question other than question1");
 				
 			}
 			//formpage.fillQuestion(args[0]);
@@ -62,17 +64,33 @@
 			for (int i=1;i<args.length;i++) {
 				
 				formpage.fillOption(args[i]);
-				formpage.addOption();
+				System.out.println("filled option value");
+				if(i!=args.length-1) {
+				System.out.println("value of i is: "+i);
+				
+					formpage.addOption();
+					System.out.println("clciked on add option");
+					
+				}
+				
+				
 				
 			}
 			formpage.clickOnAddQuestion();
+			System.out.println("clicked on question");
 			count++;
 			Thread.sleep(3000);
 			//formpage.fillformdata(q, o1, o2, o3);
 			
 		}
 		
-		@Test
+		@Test(priority=2)
+		public void deleteQuestion() throws InterruptedException {
+			
+			formpage.clickOnDeleteQuestion();
+		}
+		
+		@Test(priority=3)
 		public void saveFormData() throws InterruptedException {
 			formpage.saveQuiz();
 		}

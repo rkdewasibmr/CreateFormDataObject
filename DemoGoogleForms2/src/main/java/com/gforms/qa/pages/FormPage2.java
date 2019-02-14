@@ -19,12 +19,26 @@ public class FormPage2 extends TestBase{
 	///Object repositary
 	@FindBy(xpath="//textarea[contains(@data-initial-value,'Untitled Question')]")
 	WebElement questiontitle;
-	@FindBy(xpath="//textarea[contains(@aria-label,'Question t') ][not (text())]")
+	
+	
+	//@FindBy(xpath="//textarea[contains(@aria-label,'Question t') ][not (text())]")
+	
+	@FindBy(xpath="//div[contains(@class,'ViewItemActive')]//textarea[contains(@aria-label,'Question t') ][not (text())]")
 	WebElement questiontitle2;
 	@FindBy(xpath="//input[contains(@data-initial-value,'Option')]")
 	WebElement option;
 
-	@FindBy(xpath="//input[contains(@aria-label,'Add option')]")
+	
+	@FindBy(xpath="//div[contains(@class,'ViewItemActive')]//div[contains(@aria-label,'Delete i') ]")
+	WebElement deletequestionbtn;
+	
+	////div[@class='freebirdFormeditorViewItemRoot itemBorder freebirdFormeditorViewItemActive']//input[contains(@aria-label,'Add')]
+	
+	//div[contains(@class,'ViewItemActive')]//input[contains(@aria-label,'Add')]
+	//@FindBy(xpath="//input[contains(@aria-label,'Add option')]")
+	
+	
+	@FindBy(xpath="//div[contains(@class,'ViewItemActive')]//input[contains(@aria-label,'Add')]")
 	WebElement addoption;
 
 	@FindBy(xpath="//div[contains(@data-tooltip,'Setting')]")
@@ -154,9 +168,23 @@ public class FormPage2 extends TestBase{
 		//driver.findElement(By.xpath("//input[contains(@aria-label,'Add option')]")).click();
 
 		action2.moveToElement(addoption).click().build().perform();
+		Thread.sleep(2000);
 		//
 
 	}
+	
+	public void clickOnDeleteQuestion() throws InterruptedException {
+
+		Actions action2 = new Actions(driver);
+		//action2.moveToElement(driver.findElement(By.xpath("//input[contains(@aria-label,'Add option')]"))).click().build().perform();
+		//driver.findElement(By.xpath("//input[contains(@aria-label,'Add option')]")).click();
+
+		action2.moveToElement(deletequestionbtn).click().build().perform();
+		Thread.sleep(2000);
+		//
+
+	}
+
 
 	public void fillOption(String o) throws InterruptedException {
 
@@ -180,13 +208,13 @@ public class FormPage2 extends TestBase{
 		Actions action2 = new Actions(driver);
 
 		action2.moveToElement(addquestionbtn).click().build().perform();
-		Thread.sleep(500);
+		//Thread.sleep(500);
 
 	}
 
 
 	public void sendvalue(WebElement ele,String value1) throws InterruptedException {
-		System.out.println("ddddd");
+		//System.out.println("usin");
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 
 		//jse.executeScript("arguments[0].setAttribute('data-initial-value',arguments[1]);",ele,value1);
@@ -199,13 +227,13 @@ public class FormPage2 extends TestBase{
 		//ele.sendKeys(Keys.);
 		//ele.click();
 		//ele.clear();
-		System.out.println("eeeeee");
+		//System.out.println("eeeeee");
 		ele.sendKeys(Keys.CONTROL,"a");
 		//ele.sendKeys(Keys.BACK_SPACE);
-		System.out.println("ffffff");
-		//Thread.sleep(3000);
+		//System.out.println("ffffff");
+		Thread.sleep(500);
 		ele.sendKeys(value1);
-		System.out.println("ggggg");
+		//System.out.println("ggggg");
 		//ele.sendKeys(Keys.TAB);
 		Thread.sleep(3000);
 		///System.out.println("hhhhhh");
