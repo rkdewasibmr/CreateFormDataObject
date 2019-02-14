@@ -18,24 +18,29 @@ public class FormPage2 extends TestBase{
 
 	///Object repositary
 	@FindBy(xpath="//textarea[contains(@data-initial-value,'Untitled Question')]")
-	static WebElement questiontitle;
+	WebElement questiontitle;
+	@FindBy(xpath="//textarea[contains(@aria-label,'Question t') ][not (text())]")
+	WebElement questiontitle2;
 	@FindBy(xpath="//input[contains(@data-initial-value,'Option')]")
-	static WebElement option;
+	WebElement option;
 
 	@FindBy(xpath="//input[contains(@aria-label,'Add option')]")
-	static WebElement addoption;
+	WebElement addoption;
 
 	@FindBy(xpath="//div[contains(@data-tooltip,'Setting')]")
-	static WebElement settingsbtn;
+	WebElement settingsbtn;
 
 	@FindBy(xpath="//content[contains(text(),'Quizzes')]")
-	static WebElement Quizoption;	
+	WebElement Quizoption;	
 
 	@FindBy(xpath="//div[contains(@aria-label,'Make this a quiz')]/div[contains(@class,' exportTrack')]")
-	static WebElement togglebtn;	
+	WebElement togglebtn;	
 
 	@FindBy(xpath="//div[contains(@class,'quantumWizDialogPaperdialogTopButtons')]//span[contains(text(),'Save')]")
-	static WebElement savebtn;	
+	WebElement savebtn;	
+
+	@FindBy(xpath="//div[contains(@class,'FatDesktop')]//div[contains(@data-tooltip,'Add question')]")
+	WebElement addquestionbtn;
 
 	//div[contains(@class,'quantumWizDialogPaperdialogTopButtons')]//span[contains(text(),'Save')]
 
@@ -60,11 +65,11 @@ public class FormPage2 extends TestBase{
 
 
 	//actions
-	public static void fillformdata(String q, String o1,String o2,String o3) throws InterruptedException {
+	public void saveQuiz() throws InterruptedException {
 
 
 
-		questiontitle =driver.findElement(By.xpath("//textarea[contains(@aria-label,'Question title')]"));
+		/*questiontitle =driver.findElement(By.xpath("//textarea[contains(@aria-label,'Question title')]"));
 		option = driver.findElement(By.xpath("//input[contains(@data-initial-value,'Option')]"));
 		addoption = driver.findElement(By.xpath("//input[contains(@aria-label,'Add option')]"));
 
@@ -91,58 +96,122 @@ public class FormPage2 extends TestBase{
 		//WebElement option2 = driver.findElement(By.xpath("//input[contains(@data-initial-value,'Option')]"));
 
 
-
-		/*questiontitle.sendKeys("q1w");
+		questiontitle.sendKeys("q1w");
 			option.sendKeys("q1o1");
-			addoption.click();
-			settingsbtn.click();
-			Thread.sleep(500);
-			Quizoption.click();
-			Thread.sleep(500);
-
-			Actions action2 = new Actions(driver);
-			action2.moveToElement(togglebtn).click().build().perform();;
-			//togglebtn.click();
-
-			//sendvalue(option2, "q1o2");
-			Thread.sleep(2000);
-			action2.moveToElement(savebtn).click().build().perform();
-			//savebtn.click();
-		 */
-	}
+			addoption.click();*/
 
 
-	public static void fillQuestion(String q) {
+		settingsbtn.click();
+		Thread.sleep(500);
+		Quizoption.click();
+		Thread.sleep(500);
 
+		Actions action2 = new Actions(driver);
+		action2.moveToElement(togglebtn).click().build().perform();;
+		//togglebtn.click();
 
-	}
-
-	public static void fillOption(String o) {
-
+		//sendvalue(option2, "q1o2");
+		Thread.sleep(2000);
+		action2.moveToElement(savebtn).click().build().perform();
+		//savebtn.click();
 
 	}
 
 
-	public static void sendvalue(WebElement ele,String value1) throws InterruptedException {
+	public void fillQuestion(String q) throws InterruptedException {
+
+		//Actions builder = new Actions(driver);
+		//builder.moveToElement(questiontitle);
+		//WebElement ele = driver.findElement(By.xpath("//textarea[contains(@data-initial-value,'Untitled Question')]"));
+		// */
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", questiontitle);
+		System.out.println("bbbbb");
+		sendvalue(questiontitle, q);
+		Thread.sleep(500);
+
+	}
+
+	
+	public void fillQuestion2(String q) throws InterruptedException {
+
+		//Actions builder = new Actions(driver);
+		//builder.moveToElement(questiontitle);
+		//WebElement ele = driver.findElement(By.xpath("//textarea[contains(@data-initial-value,'Untitled Question')]"));
+		// */
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", questiontitle2);
+		System.out.println("bbbbb");
+		sendvalue(questiontitle2, q);
+		Thread.sleep(500);
+
+	}
+
+	public void addOption() throws InterruptedException {
+
+		Actions action2 = new Actions(driver);
+		//action2.moveToElement(driver.findElement(By.xpath("//input[contains(@aria-label,'Add option')]"))).click().build().perform();
+		//driver.findElement(By.xpath("//input[contains(@aria-label,'Add option')]")).click();
+
+		action2.moveToElement(addoption).click().build().perform();
+		//
+
+	}
+
+	public void fillOption(String o) throws InterruptedException {
+
+		//Actions action2 = new Actions(driver);
+
+		//WebElement ele = driver.findElement(By.xpath("//input[contains(@data-initial-value,'Option')]"));
+
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", option);
+		
+		//action2.moveToElement(option);
+		sendvalue(option, o);
+
+
+	}
+
+	public void clickOnAddQuestion() throws InterruptedException {
+
+
+
+		Actions action2 = new Actions(driver);
+
+		action2.moveToElement(addquestionbtn).click().build().perform();
+		Thread.sleep(500);
+
+	}
+
+
+	public void sendvalue(WebElement ele,String value1) throws InterruptedException {
+		System.out.println("ddddd");
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 
 		//jse.executeScript("arguments[0].setAttribute('data-initial-value',arguments[1]);",ele,value1);
 		//jse.executeScript("arguments[0].setAttribute('value',arguments[1]);",ele,value1);
-
-
+		//jse.executeScript("arguments[0].scrollIntoView(true);", ele);
+		//Actions action2 = new Actions(driver);
+		//action2.moveToElement(ele).sendKeys(Keys.CONTROL,"a").sendKeys(Keys.BACK_SPACE).ele.sendKeys(value1).bui
 		ele.click();
 		//Thread.sleep(500);
 		//ele.sendKeys(Keys.);
 		//ele.click();
 		//ele.clear();
+		System.out.println("eeeeee");
 		ele.sendKeys(Keys.CONTROL,"a");
-		ele.sendKeys(Keys.BACK_SPACE);
+		//ele.sendKeys(Keys.BACK_SPACE);
+		System.out.println("ffffff");
 		//Thread.sleep(3000);
 		ele.sendKeys(value1);
-		ele.sendKeys(Keys.TAB);
+		System.out.println("ggggg");
+		//ele.sendKeys(Keys.TAB);
 		Thread.sleep(3000);
-		jse.executeScript("arguments[0].setAttribute('data-initial-value',arguments[1]);",ele,value1);
-
+		///System.out.println("hhhhhh");
+		//jse.executeScript("arguments[0].setAttribute('data-initial-value',arguments[1]);",ele,value1);
+		//jse.executeScript("arguments[0].setAttribute('data-initial-value',arguments[1]);",ele,"");
+		//System.out.println("iiiii");
 
 
 

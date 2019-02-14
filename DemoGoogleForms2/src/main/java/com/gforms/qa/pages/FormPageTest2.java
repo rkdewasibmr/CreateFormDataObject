@@ -14,7 +14,7 @@
 
 	public class FormPageTest2 extends TestBase{
 		
-		
+		public static int count=1;
 		public static UserNamePage2 usernamepage;
 		public static LoginPage2 loginpage;
 		public static HomePage2 homepage;
@@ -49,13 +49,32 @@
 			//formpage.fillformdata(q,o1,o2,o3);
 			System.out.println("print length of array"+args.length);
 			
-			formpage.fillQuestion(args[0]);
+			if(count==1) {
+				formpage.fillQuestion(args[0]);
+				
+			}
+			else {
+				formpage.fillQuestion2(args[0]);
+				
+			}
+			//formpage.fillQuestion(args[0]);
 			
 			for (int i=1;i<args.length;i++) {
+				
 				formpage.fillOption(args[i]);
+				formpage.addOption();
+				
 			}
+			formpage.clickOnAddQuestion();
+			count++;
+			Thread.sleep(3000);
 			//formpage.fillformdata(q, o1, o2, o3);
 			
+		}
+		
+		@Test
+		public void saveFormData() throws InterruptedException {
+			formpage.saveQuiz();
 		}
 		
 		
